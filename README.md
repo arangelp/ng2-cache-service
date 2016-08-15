@@ -89,6 +89,7 @@ import {CacheService, CacheStorageAbstract, CacheLocalStorage} from 'ng2-cache/n
 ```
 
 ## License
+ISC © [Evgeny Popodyanets](https://github.com/DarthKurt)
 
+Originally forked from
 ISC © [Romanov Evgeny](https://github.com/Jackson88)
-
