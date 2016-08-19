@@ -8,7 +8,8 @@
     "url": "https://github.com/DarthKurt/ng2-cache.git"
   },
   "scripts": {
-    "prepublish": "typings install && tsc"
+    "prepublish": "typings install && tsc",
+    "build": "tsc"
   },
   "typings": "ng2-cache.d.ts",
   "keywords": [
