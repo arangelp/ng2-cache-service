@@ -1,6 +1,6 @@
 {
   "name": "ng2-cache-service",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Client side caching service for Angular2",
   "main": "index.js",
   "repository": {
