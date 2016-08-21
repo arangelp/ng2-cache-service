@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DarthKurt/ng2-cache.git"
+    "url": "https://github.com/DarthKurt/ng2-cache-service.git"
   },
   "scripts": {
     "prepublish": "typings install && tsc",

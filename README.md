@@ -1,4 +1,4 @@
-# ng2-cache
+# ng2-cache-service
 
 Client side caching service for Angular2
 
@@ -15,7 +15,7 @@ Usage:
 ```typescript
 
 import {Component} from '@angular/core';
-import {CacheService} from 'ng2-cache/ng2-cache';
+import {CacheService} from 'ng2-cache-service';
 
 declare var BUILD_VERSION: string;
 
