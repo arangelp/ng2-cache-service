@@ -1,5 +1,5 @@
 {
-  "name": "ng2-cache",
+  "name": "ng2-cache-service",
   "version": "1.0.0",
   "description": "Client side caching service for Angular2",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "prepublish": "typings install && tsc",
     "build": "tsc"
   },
-  "typings": "ng2-cache.d.ts",
+  "typings": "ng2-cache-service.d.ts",
   "keywords": [
     "cache",
     "angular2",

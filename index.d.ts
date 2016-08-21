@@ -1,1 +1,1 @@
-export * from './dist/ng2-cache';
+export * from './dist/ng2-cache-service';
