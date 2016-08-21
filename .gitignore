@@ -7,6 +7,5 @@ npm-debug.log
 .idea
 
 # Ignored files
-*.js
+/typings
 *.map
-*.d.ts
