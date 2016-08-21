@@ -1,12 +1,11 @@
 # Node
 node_modules/*
 npm-debug.log
-src
-typing
+/src
+/typing
 
 # Typescript
 *.ts
-!*d.ts
 
 # JetBrains
 .idea
