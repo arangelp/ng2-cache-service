@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
-    "module": "system",
+    "module": "commonjs",
     "target": "es5",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": false,
     "moduleResolution": "node",
     "declaration": true,
-    "outFile": "./dist/ng2-cache.js"
+    "outDir": "./dist"
     },
     "exclude": [
         "node_modules"
