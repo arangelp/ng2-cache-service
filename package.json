@@ -22,8 +22,6 @@
   "license": "ISC",
   "devDependencies": {
     "@types/es6-shim": "0.31.32",
-    "@types/core-js": "^0.9.34",
-    "@types/node": "^6.0.45",
     "@angular/core": "2.1.1",
     "core-js": "^2.4.1",
     "reflect-metadata": "^0.1.8",
