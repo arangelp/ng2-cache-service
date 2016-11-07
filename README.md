@@ -91,7 +91,8 @@ import {
 import {
          CacheService,
          CacheStorageAbstract,
-         CacheLocalStorage}     from 'ng2-cache-service/ng2-cache-service';
+         CacheLocalStorage
+       }                        from 'ng2-cache-service/ng2-cache-service';
 
 @Component({
     selector: 'some-selector',
