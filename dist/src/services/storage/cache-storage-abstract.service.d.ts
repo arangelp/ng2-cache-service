@@ -14,7 +14,7 @@ export declare abstract class CacheStorageAbstract {
      * @param key
      * @param value
      */
-    abstract setItem(key: string, value: StorageValueInterface): void;
+    abstract setItem(key: string, value: StorageValueInterface): boolean;
     /**
      * Remove item from storage
      * @param key

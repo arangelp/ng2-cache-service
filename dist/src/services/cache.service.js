@@ -46,10 +46,13 @@ var CacheService = (function () {
     CacheService.prototype.set = function (key, value, options) {
         var storageKey = this._toStorageKey(key);
         options = options ? options : this._defaultOptions;
-        this._storage.setItem(storageKey, this._toStorageValue(value, options));
-        if (!this._isSystemKey(key) && options.tag) {
-            this._saveTag(options.tag, storageKey);
+        if (this._storage.setItem(storageKey, this._toStorageValue(value, options))) {
+            if (!this._isSystemKey(key) && options.tag) {
+                this._saveTag(options.tag, storageKey);
+            }
+            return true;
         }
+        return false;
     };
     /**
      * Get data from cache
@@ -109,6 +112,16 @@ var CacheService = (function () {
         return result;
     };
     /**
+     * Create a new instance of cache with needed storage
+     * @param type
+     * @returns {CacheService}
+     */
+    CacheService.prototype.useStorage = function (type) {
+        var service = new CacheService(this._initStorage(type));
+        service.setGlobalPrefix(this._getCachePrefix());
+        return service;
+    };
+    /**
      * Remove all by tag
      * @param tag
      */
@@ -136,10 +149,10 @@ var CacheService = (function () {
      */
     CacheService.prototype._validateStorage = function () {
         if (!this._storage) {
-            this._initStorage(DEFAULT_STORAGE);
+            this._storage = this._initStorage(DEFAULT_STORAGE);
         }
         if (!this._storage.isEnabled()) {
-            this._initStorage(DEFAULT_ENABLED_STORAGE);
+            this._storage = this._initStorage(DEFAULT_ENABLED_STORAGE);
         }
     };
     /**
@@ -164,15 +177,17 @@ var CacheService = (function () {
      * @returns {CacheStorageAbstract}
      */
     CacheService.prototype._initStorage = function (type) {
+        var storage;
         switch (type) {
             case 1 /* SESSION_STORAGE */:
-                this._storage = new cache_session_storage_service_1.CacheSessionStorage();
+                storage = new cache_session_storage_service_1.CacheSessionStorage();
                 break;
             case 0 /* LOCAL_STORAGE */:
-                this._storage = new cache_local_storage_service_1.CacheLocalStorage();
+                storage = new cache_local_storage_service_1.CacheLocalStorage();
                 break;
-            default: this._storage = new cache_memory_service_1.CacheMemoryStorage();
+            default: storage = new cache_memory_service_1.CacheMemoryStorage();
         }
+        return storage;
     };
     CacheService.prototype._toStorageKey = function (key) {
         return this._getCachePrefix() + key;

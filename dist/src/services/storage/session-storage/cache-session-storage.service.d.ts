@@ -6,7 +6,7 @@ import { StorageValueInterface } from '../../../interfaces/storage-value.interfa
  */
 export declare class CacheSessionStorage extends CacheStorageAbstract {
     getItem(key: string): any;
-    setItem(key: string, value: StorageValueInterface): void;
+    setItem(key: string, value: StorageValueInterface): boolean;
     removeItem(key: string): void;
     clear(): void;
     type(): CacheStoragesEnum;

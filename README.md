@@ -1,4 +1,4 @@
-# ng2-cache
+# ng2-cache-service
 
 Client side caching service for Angular2
 
@@ -7,15 +7,18 @@ Client side caching service for Angular2
 To install this library, run:
 
 ```bash
-$ npm install ng2-cache --save
+$ npm install ng2-cache-service --save
 ```
 
 Usage:
 
 ```typescript
 
-import {Component} from '@angular/core';
-import {CacheService, CacheStoragesEnum} from 'ng2-cache/ng2-cache';
+import { Component }        from '@angular/core';
+import {
+         CacheService,
+         CacheStoragesEnum
+       }                    from 'ng2-cache-service/ng2-cache-service';
 
 declare var BUILD_VERSION: string;
 
@@ -81,8 +84,14 @@ To change storage to local storage:
 
 ```typescript
 
-import {Component, provide} from 'angular2/core';
-import {CacheService, CacheStorageAbstract, CacheLocalStorage} from 'ng2-cache/ng2-cache';
+import {
+         Component,
+         provide
+       }                        from 'angular2/core';
+import {
+         CacheService,
+         CacheStorageAbstract,
+         CacheLocalStorage}     from 'ng2-cache-service/ng2-cache-service';
 
 @Component({
     selector: 'some-selector',
@@ -96,6 +105,8 @@ import {CacheService, CacheStorageAbstract, CacheLocalStorage} from 'ng2-cache/n
 ```
 
 ## License
+ISC © [Evgeny Popodyanets](https://github.com/DarthKurt)
 
+Originally forked from
 ISC © [Romanov Evgeny](https://github.com/Jackson88)
 

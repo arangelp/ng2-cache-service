@@ -28,7 +28,13 @@ var CacheLocalStorage = (function (_super) {
         return value ? JSON.parse(value) : null;
     };
     CacheLocalStorage.prototype.setItem = function (key, value) {
-        localStorage.setItem(key, JSON.stringify(value));
+        try {
+            localStorage.setItem(key, JSON.stringify(value));
+            return true;
+        }
+        catch (e) {
+            return false;
+        }
     };
     CacheLocalStorage.prototype.removeItem = function (key) {
         localStorage.removeItem(key);

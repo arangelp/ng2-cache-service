@@ -1,4 +1,5 @@
 import { CacheOptionsInterface } from '../interfaces/cache-options.interface';
+import { CacheStoragesEnum } from '../enums/cache-storages.enum';
 import { CacheStorageAbstract } from './storage/cache-storage-abstract.service';
 export declare class CacheService {
     private _storage;
@@ -19,7 +20,7 @@ export declare class CacheService {
      * @param value
      * @param options
      */
-    set(key: string, value: any, options?: CacheOptionsInterface): void;
+    set(key: string, value: any, options?: CacheOptionsInterface): boolean;
     /**
      * Get data from cache
      * @param key
@@ -47,6 +48,12 @@ export declare class CacheService {
      * @returns {Array}
      */
     getTagData(tag: string): {};
+    /**
+     * Create a new instance of cache with needed storage
+     * @param type
+     * @returns {CacheService}
+     */
+    useStorage(type: CacheStoragesEnum): CacheService;
     /**
      * Remove all by tag
      * @param tag

@@ -29,6 +29,7 @@ var CacheMemoryStorage = (function (_super) {
     };
     CacheMemoryStorage.prototype.setItem = function (key, value) {
         this._data[key] = value;
+        return true;
     };
     CacheMemoryStorage.prototype.removeItem = function (key) {
         delete this._data[key];

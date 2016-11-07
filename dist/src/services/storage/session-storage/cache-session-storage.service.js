@@ -28,7 +28,13 @@ var CacheSessionStorage = (function (_super) {
         return value ? JSON.parse(value) : null;
     };
     CacheSessionStorage.prototype.setItem = function (key, value) {
-        sessionStorage.setItem(key, JSON.stringify(value));
+        try {
+            sessionStorage.setItem(key, JSON.stringify(value));
+            return true;
+        }
+        catch (e) {
+            return false;
+        }
     };
     CacheSessionStorage.prototype.removeItem = function (key) {
         sessionStorage.removeItem(key);
