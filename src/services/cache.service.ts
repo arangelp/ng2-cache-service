@@ -30,7 +30,7 @@ export class CacheService {
      */
     private _prefix: string = CACHE_PREFIX;
 
-    public constructor(@Optional() private _storage: CacheStorageAbstract) {
+    public constructor(@Optional() private _storage?: CacheStorageAbstract) {
         this._validateStorage();
     }
 

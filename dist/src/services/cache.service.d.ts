@@ -13,7 +13,7 @@ export declare class CacheService {
      * Cache prefix
      */
     private _prefix;
-    constructor(_storage: CacheStorageAbstract);
+    constructor(_storage?: CacheStorageAbstract);
     /**
      * Set data to cache
      * @param key
