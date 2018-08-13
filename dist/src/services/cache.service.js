@@ -5,22 +5,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var cache_storage_abstract_service_1 = require("./storage/cache-storage-abstract.service");
 var cache_session_storage_service_1 = require("./storage/session-storage/cache-session-storage.service");
 var cache_local_storage_service_1 = require("./storage/local-storage/cache-local-storage.service");
 var cache_memory_service_1 = require("./storage/memory/cache-memory.service");
 var CACHE_PREFIX = 'CacheService';
 var DEFAULT_STORAGE = 1 /* SESSION_STORAGE */;
 var DEFAULT_ENABLED_STORAGE = 2 /* MEMORY */;
-var CacheService = CacheService_1 = (function () {
+var CacheService = /** @class */ (function () {
     function CacheService(_storage) {
         this._storage = _storage;
         /**
@@ -38,6 +34,7 @@ var CacheService = CacheService_1 = (function () {
         this._prefix = CACHE_PREFIX;
         this._validateStorage();
     }
+    CacheService_1 = CacheService;
     /**
      * Set data to cache
      * @param key
@@ -267,12 +264,11 @@ var CacheService = CacheService_1 = (function () {
     CacheService.prototype._tagsStorageKey = function () {
         return 'CacheService_tags';
     };
+    var CacheService_1;
+    CacheService = CacheService_1 = __decorate([
+        core_1.Injectable(),
+        __param(0, core_1.Optional())
+    ], CacheService);
     return CacheService;
 }());
-CacheService = CacheService_1 = __decorate([
-    core_1.Injectable(),
-    __param(0, core_1.Optional()),
-    __metadata("design:paramtypes", [cache_storage_abstract_service_1.CacheStorageAbstract])
-], CacheService);
 exports.CacheService = CacheService;
-var CacheService_1;

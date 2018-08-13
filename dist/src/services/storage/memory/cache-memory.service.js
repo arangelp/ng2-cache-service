@@ -1,8 +1,11 @@
 "use strict";
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -21,7 +24,7 @@ var cache_storage_abstract_service_1 = require("../cache-storage-abstract.servic
 /**
  * Service for storing data in local storage
  */
-var CacheMemoryStorage = (function (_super) {
+var CacheMemoryStorage = /** @class */ (function (_super) {
     __extends(CacheMemoryStorage, _super);
     function CacheMemoryStorage() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -47,9 +50,9 @@ var CacheMemoryStorage = (function (_super) {
     CacheMemoryStorage.prototype.isEnabled = function () {
         return true;
     };
+    CacheMemoryStorage = __decorate([
+        core_1.Injectable()
+    ], CacheMemoryStorage);
     return CacheMemoryStorage;
 }(cache_storage_abstract_service_1.CacheStorageAbstract));
-CacheMemoryStorage = __decorate([
-    core_1.Injectable()
-], CacheMemoryStorage);
 exports.CacheMemoryStorage = CacheMemoryStorage;

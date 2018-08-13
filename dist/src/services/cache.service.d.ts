@@ -2,7 +2,7 @@ import { CacheOptionsInterface } from '../interfaces/cache-options.interface';
 import { CacheStoragesEnum } from '../enums/cache-storages.enum';
 import { CacheStorageAbstract } from './storage/cache-storage-abstract.service';
 export declare class CacheService {
-    private _storage;
+    private _storage?;
     /**
      * Default cache options
      * @type CacheOptionsInterface
@@ -68,21 +68,21 @@ export declare class CacheService {
      * Validate cache storage
      * @private
      */
-    private _validateStorage();
+    private _validateStorage;
     /**
      * Remove key from tags keys list
      * @param key
      * @private
      */
-    private _removeFromTag(key);
+    private _removeFromTag;
     /**
      * Init storage by type
      * @param type
      * @returns {CacheStorageAbstract}
      */
-    private _initStorage(type);
-    private _toStorageKey(key);
-    private _fromStorageKey(key);
+    private _initStorage;
+    private _toStorageKey;
+    private _fromStorageKey;
     /**
      * Prepare value to set to storage
      * @param value
@@ -90,40 +90,40 @@ export declare class CacheService {
      * @returns {{value: any, options: CacheOptionsInterface}}
      * @private
      */
-    private _toStorageValue(value, options);
+    private _toStorageValue;
     /**
      * Prepare options to set to storage
      * @param options
      * @returns {CacheOptionsInterface}
      * @private
      */
-    private _toStorageOptions(options);
+    private _toStorageOptions;
     /**
      * Validate storage value
      * @param value
      * @returns {boolean}
      * @private
      */
-    private _validateStorageValue(value);
+    private _validateStorageValue;
     /**
      * check if its system cache key
      * @param key
      * @returns {boolean}
      * @private
      */
-    private _isSystemKey(key);
+    private _isSystemKey;
     /**
      * Save tag to list of tags
      * @param tag
      * @param key
      * @private
      */
-    private _saveTag(tag, key);
+    private _saveTag;
     /**
      * Get global cache prefix
      * @returns {string}
      * @private
      */
-    private _getCachePrefix();
-    private _tagsStorageKey();
+    private _getCachePrefix;
+    private _tagsStorageKey;
 }

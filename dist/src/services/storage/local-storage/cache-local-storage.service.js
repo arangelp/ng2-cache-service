@@ -1,8 +1,11 @@
 "use strict";
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -21,7 +24,7 @@ var cache_storage_abstract_service_1 = require("../cache-storage-abstract.servic
 /**
  * Service for storing data in local storage
  */
-var CacheLocalStorage = (function (_super) {
+var CacheLocalStorage = /** @class */ (function (_super) {
     __extends(CacheLocalStorage, _super);
     function CacheLocalStorage() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -36,7 +39,16 @@ var CacheLocalStorage = (function (_super) {
             return true;
         }
         catch (e) {
-            return false;
+            if (this._isQuotaExceeded(e)) {
+                // notifiy user about the error
+                throw {
+                    code: 22,
+                    message: 'Persistent storage maximum size reached'
+                };
+            }
+            else {
+                throw e;
+            }
         }
     };
     CacheLocalStorage.prototype.removeItem = function (key) {
@@ -58,9 +70,32 @@ var CacheLocalStorage = (function (_super) {
             return false;
         }
     };
+    CacheLocalStorage.prototype._isQuotaExceeded = function (e) {
+        var quotaExceeded = false;
+        if (e) {
+            if (e.code) {
+                switch (e.code) {
+                    case 22:
+                        quotaExceeded = true;
+                        break;
+                    case 1014:
+                        // Firefox
+                        if (e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+                            quotaExceeded = true;
+                        }
+                        break;
+                }
+            }
+            else if (e.number === -2147024882) {
+                // Internet Explorer 8
+                quotaExceeded = true;
+            }
+        }
+        return quotaExceeded;
+    };
+    CacheLocalStorage = __decorate([
+        core_1.Injectable()
+    ], CacheLocalStorage);
     return CacheLocalStorage;
 }(cache_storage_abstract_service_1.CacheStorageAbstract));
-CacheLocalStorage = __decorate([
-    core_1.Injectable()
-], CacheLocalStorage);
 exports.CacheLocalStorage = CacheLocalStorage;
