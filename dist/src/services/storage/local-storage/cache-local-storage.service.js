@@ -36,7 +36,16 @@ var CacheLocalStorage = (function (_super) {
             return true;
         }
         catch (e) {
-            return false;
+            if (this._isQuotaExceeded(e)) {
+                // notifiy user about the error
+                throw {
+                    code: 22,
+                    message: 'Persistent storage maximum size reached'
+                };
+            }
+            else {
+                return false;
+            }
         }
     };
     CacheLocalStorage.prototype.removeItem = function (key) {
@@ -57,6 +66,29 @@ var CacheLocalStorage = (function (_super) {
         catch (e) {
             return false;
         }
+    };
+    CacheLocalStorage.prototype._isQuotaExceeded = function (e) {
+        var quotaExceeded = false;
+        if (e) {
+            if (e.code) {
+                switch (e.code) {
+                    case 22:
+                        quotaExceeded = true;
+                        break;
+                    case 1014:
+                        // Firefox
+                        if (e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+                            quotaExceeded = true;
+                        }
+                        break;
+                }
+            }
+            else if (e.number === -2147024882) {
+                // Internet Explorer 8
+                quotaExceeded = true;
+            }
+        }
+        return quotaExceeded;
     };
     return CacheLocalStorage;
 }(cache_storage_abstract_service_1.CacheStorageAbstract));

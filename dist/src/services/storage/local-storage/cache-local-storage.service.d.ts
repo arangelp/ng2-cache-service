@@ -11,4 +11,5 @@ export declare class CacheLocalStorage extends CacheStorageAbstract {
     clear(): void;
     type(): CacheStoragesEnum;
     isEnabled(): boolean;
+    private _isQuotaExceeded(e);
 }
