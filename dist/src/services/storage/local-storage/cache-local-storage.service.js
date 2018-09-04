@@ -38,10 +38,10 @@ var CacheLocalStorage = (function (_super) {
         catch (e) {
             if (this._isQuotaExceeded(e)) {
                 // notifiy user about the error
-                throw {
+                /* throw {
                     code: 22,
                     message: 'Persistent storage maximum size reached'
-                };
+                }; */
             }
             else {
                 return false;
